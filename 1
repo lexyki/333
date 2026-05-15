@@ -1,0 +1,35 @@
+age = int(input("Введіть вік: "))
+day = int(input("Введіть день тижня (1-7): "))
+
+# Перевірка на коректність вводу (OR)
+if age < 0 or age > 120:
+    print("Помилка: некоректний вік!")
+elif day < 1 or day > 7:
+    print("Помилка: день тижня повинен бути від 1 до 7!")
+else:
+    # Визначення базової ціни (if / elif / else)
+    if age < 12:
+        price = 50
+        category = "Дитина"
+    elif age <= 25:
+        price = 80
+        category = "Студент"
+    elif age <= 64:
+        price = 120
+        category = "Дорослий"
+    else:
+        price = 60
+        category = "Пенсіонер"
+
+    # Надбавка за вихідний (AND + OR)
+    is_weekend = (day == 6 or day == 7)
+    if is_weekend and age >= 12:
+        price += 30
+        print("Увага: надбавка +30 грн за вихідний день!")
+
+    # Перевірка пенсійної знижки (NOT)
+    if not (age >= 65):
+        print("Пенсійна знижка не застосовується")
+
+    print(f"Категорія: {category}")
+    print(f"Вартість квитка: {price} грн")
